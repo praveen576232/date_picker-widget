@@ -10,7 +10,7 @@
 Add date_picker_widget to your pubspec.yaml dependencies. And import it:
 
 ```bash
-  date_picker_widget: ^0.0.2
+  date_picker_widget: ^0.0.3
 ```
     
 ## How to use #
