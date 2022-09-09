@@ -7,7 +7,7 @@
 
 ## Installation
 
-Add slide_up to your pubspec.yaml dependencies. And import it:
+Add date_picker_widget to your pubspec.yaml dependencies. And import it:
 
 ```bash
   date_picker_widget: ^0.0.2
