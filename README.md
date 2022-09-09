@@ -72,7 +72,7 @@ class Screen2 extends StatelessWidget {
 
 ## Screenshots
 
-![App Screenshot](https://github.com/praveen576232/slide_up/blob/main/screenshots/preview.gif?raw=true)
+![App Screenshot](https://github.com/praveen576232/date_picker-widget/blob/main/screenshots/preview.gif?raw=true)
 
 
 ## Badges
