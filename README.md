@@ -10,7 +10,7 @@
 Add slide_up to your pubspec.yaml dependencies. And import it:
 
 ```bash
-  date_picker_widget: ^0.0.1
+  date_picker_widget: ^0.0.2
 ```
     
 ## How to use #

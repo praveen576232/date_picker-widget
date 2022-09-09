@@ -1,6 +1,6 @@
 name: date_picker_widget
 description: custom cupertino date picker widget.
-version: 0.0.1
+version: 0.0.2
 homepage:
 
 environment:
