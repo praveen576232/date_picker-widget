@@ -10,14 +10,11 @@ class CustomTimePicker extends StatelessWidget {
       required this.initialDate,
       required this.height,
       required this.width,
-       this.is24Hours = false,
-       this.lineDecoration = const BoxDecoration(color: Colors.grey),
-       this.decoration,
-       this.textStyle = const TextStyle(
-              color: Colors.black,
-              fontSize: 26,
-              fontWeight: FontWeight.w600)
-      })
+      this.is24Hours = false,
+      this.lineDecoration = const BoxDecoration(color: Colors.grey),
+      this.decoration,
+      this.textStyle = const TextStyle(
+          color: Colors.black, fontSize: 26, fontWeight: FontWeight.w600)})
       : super(key: key);
   final Function(TimeOfDay) onTimeSelected;
   final TimeOfDay initialDate;
@@ -37,7 +34,7 @@ class CustomTimePicker extends StatelessWidget {
       height: height,
       decoration: decoration,
       child: CupertinoTheme(
-        data:  CupertinoThemeData(
+        data: CupertinoThemeData(
             textTheme: CupertinoTextThemeData(
           pickerTextStyle: textStyle,
         )),
@@ -58,13 +55,24 @@ class CustomTimePicker extends StatelessWidget {
                   diameterRatio: 5.5,
                   onSelectedItemChanged: (h) {
                     hour = h;
-                    if(is24Hours) {
-                      onTimeSelected(TimeOfDay(hour: hour+1, minute: minute));
-                    }else{
-                        onTimeSelected(TimeOfDay(hour:isAm ? hour+1 : isAm ? hour+1 : (hour +13) == 24 ? minute >0 ? 0 : (hour+13):(hour+13), minute: minute));
-                     }
+                    if (is24Hours) {
+                      onTimeSelected(TimeOfDay(hour: hour + 1, minute: minute));
+                    } else {
+                      onTimeSelected(TimeOfDay(
+                          hour: isAm
+                              ? hour + 1
+                              : isAm
+                                  ? hour + 1
+                                  : (hour + 13) == 24
+                                      ? minute > 0
+                                          ? 0
+                                          : (hour + 13)
+                                      : (hour + 13),
+                          minute: minute));
+                    }
                   },
-                  children: List.generate(is24Hours? 24: 12, (index) => Text("${index + 1}"))),
+                  children: List.generate(
+                      is24Hours ? 24 : 12, (index) => Text("${index + 1}"))),
             ),
             _line,
             Expanded(
@@ -81,42 +89,48 @@ class CustomTimePicker extends StatelessWidget {
                   diameterRatio: 5.5,
                   onSelectedItemChanged: (m) {
                     minute = m;
-                     if(is24Hours) {
-                       onTimeSelected(TimeOfDay(hour: hour+1, minute: m));
-                     }else{
-                        onTimeSelected(TimeOfDay(hour:isAm ? hour+1 : (hour +13) == 24 ? minute >0 ? 0 : (hour+13):(hour+13), minute: m));
-                     }
+                    if (is24Hours) {
+                      onTimeSelected(TimeOfDay(hour: hour + 1, minute: m));
+                    } else {
+                      onTimeSelected(TimeOfDay(
+                          hour: isAm
+                              ? hour + 1
+                              : (hour + 13) == 24
+                                  ? minute > 0
+                                      ? 0
+                                      : (hour + 13)
+                                  : (hour + 13),
+                          minute: m));
+                    }
                   },
                   children: List.generate(60, (index) => Text("$index"))),
             ),
-            if(!is24Hours)
-            _line,
-             if(!is24Hours)
-            Expanded(
-              child: CupertinoPicker(
-                  scrollController:
-                      FixedExtentScrollController(initialItem: isAm ? 0 : 1),
-                  selectionOverlay:
-                      const CupertinoPickerDefaultSelectionOverlay(
-                          background: Colors.transparent),
-                 
-                  itemExtent: 30,
-                  magnification: 1,
-                  squeeze: .5,
-                  diameterRatio: 5.5,
-                  onSelectedItemChanged: (i) {
-                    if (i == 0) {
-                      isAm = true;
-                      onTimeSelected(
-                          TimeOfDay(hour: hour+1, minute: minute));
-                    } else {
-                      isAm = false;
-                      onTimeSelected(TimeOfDay(
-                          hour: hour+13, minute: minute));
-                    }
-                  },
-                  children: const [Text("AM"), Text("PM")]),
-            )
+            if (!is24Hours) _line,
+            if (!is24Hours)
+              Expanded(
+                child: CupertinoPicker(
+                    scrollController:
+                        FixedExtentScrollController(initialItem: isAm ? 0 : 1),
+                    selectionOverlay:
+                        const CupertinoPickerDefaultSelectionOverlay(
+                            background: Colors.transparent),
+                    itemExtent: 30,
+                    magnification: 1,
+                    squeeze: .5,
+                    diameterRatio: 5.5,
+                    onSelectedItemChanged: (i) {
+                      if (i == 0) {
+                        isAm = true;
+                        onTimeSelected(
+                            TimeOfDay(hour: hour + 1, minute: minute));
+                      } else {
+                        isAm = false;
+                        onTimeSelected(
+                            TimeOfDay(hour: hour + 13, minute: minute));
+                      }
+                    },
+                    children: const [Text("AM"), Text("PM")]),
+              )
           ],
         ),
       ),
@@ -124,8 +138,8 @@ class CustomTimePicker extends StatelessWidget {
   }
 
   Widget get _line => Padding(
-        padding:const EdgeInsets.symmetric(vertical: 30),
-        child:  DecoratedBox(
+        padding: const EdgeInsets.symmetric(vertical: 30),
+        child: DecoratedBox(
           decoration: lineDecoration,
           child: const SizedBox(
             width: 1,
