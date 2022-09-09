@@ -15,7 +15,7 @@ Add date_picker_widget to your pubspec.yaml dependencies. And import it:
     
 ## How to use #
 
-Simply create a SlideUp widget, and pass the required params:
+Simply create a CustomTimePicker widget, and pass the required params:
 
 ```bash
     CustomTimePicker(
